@@ -37,9 +37,19 @@ in {
 
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
-    git
     zed-editor
   ];
+
+  programs.git = {
+    enable = true;
+    userName = "gumonteilh";
+    userEmail = "monteilhetguillaume@gmail.com";
+    extraConfig  = {
+      push = {
+        autoSetupRemote = true;
+      };
+    };
+  };
 
   programs.ghostty = {
     enable = true;

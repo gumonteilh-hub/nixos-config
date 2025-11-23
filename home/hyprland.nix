@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   home.sessionVariables = {
     QT_QPA_PLATFORMTHEME = "qt5ct";
     NIXOS_OZONE_WL = "1";
@@ -21,7 +21,7 @@
         "XCURSOR_SIZE,24"
       ];
 
-      monitor = ",preferred,auto,1";
+      monitor = lib.mkDefault [ ",preferred,auto,1"];
 
       "$terminal" = "ghostty";
       "$fileManager" = "dolphin";

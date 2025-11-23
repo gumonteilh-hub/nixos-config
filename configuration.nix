@@ -2,14 +2,25 @@
   # gestion boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelParams = ["btusb.enable_autosuspend=n" ];
 
   # gestion network
   networking.networkmanager.enable = true;
 
   # gestion hardware
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
+  hardware.bluetooth = {
+	  enable = true;
+	  powerOnBoot = true;
+	  settings = {
+		  General = {
+			  FastConnectable = true;
+			  Experimental = true;
+		  };
+	  };
+  };
   hardware.graphics.enable = true;
+  hardware.enableAllFirmware = true;
+
 
   # gestion localisation
   time.timeZone = "Europe/Paris";
@@ -60,6 +71,7 @@
     chromium
     nh
     bluetui
+    usbutils
   ];
 
   programs.nh = {

@@ -1,14 +1,13 @@
 {pkgs, lib, ...}: {
   home.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "qt5ct";
     NIXOS_OZONE_WL = "1";
   };
 
   home.packages = with pkgs; [
-    libsForQt5.qt5ct
-    qt6ct
     libsForQt5.qt5.qtwayland
-    qt6.qtwayland
+    libsForQt5.qtsvg
+    kdePackages.qtsvg
+    kdePackages.qtwayland
   ];
 
   wayland.windowManager.hyprland = {
@@ -17,6 +16,8 @@
 
     settings = {
       env = [
+        "XDG_DATA_DIRS,/etc/profiles/per-user/gmonteilhet/share:$XDG_DATA_DIRS:/usr/share:/run/current-system/sw/share"
+        "QT_QPA_PLATFORMTHEME,gtk3"
         "XCURSOR_THEME,Bibata-Modern-Ice"
         "XCURSOR_SIZE,24"
       ];
@@ -96,7 +97,7 @@
       bind = [
         "$mainMod, Return, exec, $terminal"
         "$mainMod, W, killactive,"
-        "$mainMod, F, exec, $fileManager"
+        "$mainMod, F, exec, $terminal -e yazi"
         "$mainMod, V, togglefloating,"
         "$mainMod, SPACE, exec, $menu"
 

@@ -8,12 +8,17 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = {
     self,
     nixpkgs,
+    quickshell,
     home-manager,
     nixpkgs-unstable,
     ...
@@ -38,7 +43,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.gmonteilhet = import ./home/home.nix;
             home-manager.extraSpecialArgs = {
-              inherit inputs pkgsUnstable;
+              inherit inputs pkgsUnstable quickshell;
               profile = "perso";
             };
           }
@@ -47,7 +52,7 @@
 
       work = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit inputs pkgsUnstable;};
+        specialArgs = {inherit inputs pkgsUnstable quickshell;};
         modules = [
           ./configuration.nix
           ./hosts/work/configuration.nix

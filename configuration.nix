@@ -65,6 +65,11 @@
     xwayland.enable = true;
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk ];
+  };
+
   # gestion packages
   programs.fish.enable = true;
   environment.systemPackages = with pkgs; [
@@ -72,6 +77,9 @@
     nh
     bluetui
     usbutils
+    pavucontrol
+    yazi
+    fastfetch
   ];
 
   programs.nh = {

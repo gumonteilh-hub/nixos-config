@@ -3,6 +3,7 @@
   profile,
   lib,
   pkgsUnstable,
+  quickshell,
   ...
 }: let
   isWork = profile == "work";
@@ -12,6 +13,7 @@ in {
     [
       ./hyprland.nix
       ./waybar.nix
+      ./pwa.nix
     ]
     ++ lib.optionals isWork [./work.nix]
     ++ lib.optionals isPerso [./perso.nix];
@@ -38,7 +40,22 @@ in {
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     zed-editor
+    quickshell.packages.${pkgs.system}.default
+    kora-icon-theme
   ];
+
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk";
+  };
+
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name= "kora";
+      package = pkgs.kora-icon-theme;
+    };
+  };
 
   programs.git = {
     enable = true;

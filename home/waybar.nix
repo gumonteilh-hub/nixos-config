@@ -34,6 +34,7 @@
         "custom/logo" = {
           format = "󱄅";
           tooltip = false;
+          on-click = "ghostty -e fish -c \"fastfetch; read\"";
         };
 
         "hyprland/workspaces" = {
@@ -119,6 +120,7 @@
             default = ["󰖀" "󰕾" ""];
           };
           scroll-step = 10;
+          on-click= "pavucontrol";
         };
 
         battery = {
@@ -139,7 +141,7 @@
         "custom/power" = {
           format = "󰤆";
           tooltip = false;
-          #on-click = "~/.config/rofi/powermenu/type-2/powermenu.sh &";
+          on-click = "shutdown -h now";
         };
       };
     };
@@ -216,6 +218,7 @@
 
       #custom-power {
         margin-right: 6px;
+        background-color: #DF2935;
       }
 
       #custom-logo {
@@ -228,7 +231,7 @@
       }
 
       #memory {
-        background-color: #fab387;
+        background-color: #EDF2F4;
       }
 
       #battery {
@@ -252,29 +255,29 @@
       }
 
       #wireplumber {
-        background-color: #f9e2af;
+        background-color: #EDF2F4;
       }
 
       #network {
-        background-color: #94e2d5;
+        background-color: #EDF2F4;
         padding-right: 17px;
       }
 
       #cpu {
-        background-color: #94e2d5;
+        background-color: #EDF2F4;
       }
 
       #bluetooth {
-        background-color: #94e2d5;
+        background-color: #EDF2F4;
       }
 
       #clock {
         font-family: JetBrainsMono Nerd Font;
-        background-color: #cba6f7;
+        background-color: #EDF2F4;
       }
 
       #custom-power {
-        background-color: #f2cdcd;
+        background-color: #DF2935;
       }
 
       tooltip {
